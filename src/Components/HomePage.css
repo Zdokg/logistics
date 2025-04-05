@@ -1,0 +1,27 @@
+/* HomePage.css */
+
+.homepage-hidden {
+    opacity: 0;
+  }
+  
+  .homepage-visible {
+    opacity: 1;
+    transition: opacity 500ms ease-in-out;
+  }
+  
+  /* Animation classes for scroll reveals */
+  .animate-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  
+  .animate-reveal.reveal {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* If you need to style the body overflow */
+  body {
+    overflow-x: hidden;
+  }

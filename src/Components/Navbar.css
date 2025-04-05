@@ -1,0 +1,190 @@
+/* Navbar.css */
+
+.navbar-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 40;
+    transition: all 0.3s ease;
+    background-color: transparent;
+    padding: 1rem 0;
+  }
+  
+  .navbar-header.scrolled {
+    background-color: #f4f4f4; /* Replace with your secondary color */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem 0;
+  }
+  
+  .navbar-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-logo {
+    color: #f77f00; /* Replace with your primary color */
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  
+  .navbar-company-name {
+    margin-left: 0.5rem;
+    color: #333; /* Replace with your foreground color */
+    display: none;
+    font-weight: bold;
+  }
+  
+  @media (min-width: 640px) {
+    .navbar-company-name {
+      display: inline;
+    }
+  }
+  
+  .desktop-nav {
+    display: none;
+    gap: 1.5rem;
+    align-items: center;
+    font-weight: bold;
+  }
+  
+  @media (min-width: 768px) {
+    .desktop-nav {
+      display: flex;
+      font-weight: bold;
+    }
+  }
+  
+  .nav-link {
+    color: #333; /* Replace with your foreground color */
+    font-weight: 500;
+    transition: color 0.3s ease;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  .nav-link:hover {
+    color: #f77f00; /* Replace with your primary color */
+  }
+  
+  .felsa {
+    background-color: #f77f00; /* Replace with your primary color */
+    color: #f4f4f4; /* Replace with your secondary color */
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+  }
+
+  .felsa:hover {
+    background-color: #ca751a;
+  }
+
+  .felsa:active{
+    background-color: #914b00;
+  }
+
+  .felsa-2{
+    background-color: transparent; 
+    color: #f77f00; 
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+  }
+
+  .felsa-2:hover {
+    transform: scale(1.2);
+    transition: all 0.5s;
+  }
+
+  .felsa-2:active {
+    color: #914b00;
+  }
+  
+  .quote-button:hover {
+    background-color: #f77f00; /* Replace with your primary-dark color */
+  }
+  
+  .mobile-menu-button {
+    display: block;
+  }
+  
+  @media (min-width: 768px) {
+    .mobile-menu-button {
+      display: none;
+    }
+  }
+  
+  .menu-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #333; /* Replace with your foreground color */
+    padding: 0.5rem;
+  }
+  
+  .mobile-nav {
+    background-color: #f77f00; /* Replace with your secondary color */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .mobile-nav-container {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .mobile-nav-link {
+    color: #333; /* Replace with your foreground color */
+    font-weight: 500;
+    transition: color 0.3s ease;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem 0;
+    font-size: 1rem;
+    text-align: left;
+  }
+  
+  .mobile-nav-link:hover {
+    color: #f77f00; /* Replace with your primary color */
+  }
+  
+  .mobile-quote-button {
+    background-color: #f77f00; /* Replace with your primary color */
+    color: #f77f00; /* Replace with your secondary color */
+    padding: 0.75rem;
+    border-radius: 4px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+  }
+  
+  .mobile-quote-button:hover {
+    background-color: #f77f00; /* Replace with your primary-dark color */
+  }
