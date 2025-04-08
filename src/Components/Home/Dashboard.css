@@ -1,0 +1,74 @@
+/* Dashboard.css */
+
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f5f5f5; /* background color */
+  }
+  
+  .main-content {
+    flex: 1;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .sidebar-open {
+    margin-left: 16rem; /* 64px equivalent */
+  }
+  
+  .sidebar-collapsed {
+    margin-left: 5rem; /* 80px equivalent */
+  }
+  
+  .main-content-inner {
+    padding: 1.5rem; /* 24px equivalent */
+  }
+  
+  .welcome-section {
+    margin-bottom: 2rem; /* 32px equivalent */
+  }
+  
+  .welcome-title {
+    font-size: 1.5rem; /* 24px equivalent */
+    font-weight: 600;
+    margin-bottom: 0.5rem; /* 8px equivalent */
+    animation: fadeIn 0.5s ease-in;
+  }
+  
+  .welcome-subtitle {
+    color: #6b7280; /* muted-foreground color */
+    animation: fadeIn 0.5s ease-in 0.1s;
+    animation-fill-mode: both;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem; /* 24px equivalent */
+    margin-bottom: 1.5rem; /* 24px equivalent */
+  }
+  
+  @media (min-width: 1024px) {
+    .grid-container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  /* Animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in;
+  }
+  
+  .animate-delay-100 {
+    animation-delay: 0.1s;
+  }

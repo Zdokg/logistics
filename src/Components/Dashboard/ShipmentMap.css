@@ -1,0 +1,182 @@
+/* ShipmentMap.css */
+
+.shipment-map-card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 24px;
+    animation: fadeIn 0.5s ease-in 0.2s;
+    animation-fill-mode: both;
+  }
+  
+  .shipment-map-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+  
+  .shipment-map-header h2 {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0;
+  }
+  
+  .view-details-button {
+    font-size: 14px;
+    font-weight: 500;
+    color: #3b82f6;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  
+  .view-details-button:hover {
+    color: #2563eb;
+  }
+  
+  .map-container {
+    width: 100%;
+    height: 300px;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+  }
+  
+  .map-point {
+    position: absolute;
+    z-index: 10;
+  }
+  
+  .origin-point {
+    left: 20%;
+    top: 30%;
+  }
+  
+  .destination-point {
+    left: 70%;
+    top: 60%;
+  }
+  
+  .current-location {
+    left: 45%;
+    top: 45%;
+    animation: pingSlow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+  
+  .point-container {
+    position: relative;
+  }
+  
+  .point-icon {
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    background-color: white;
+    border: 2px solid #3b82f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .current-icon {
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    background-color: white;
+    border: 2px solid #2563eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+  
+  .point-svg {
+    height: 12px;
+    width: 12px;
+    color: #3b82f6;
+  }
+  
+  .current-svg {
+    height: 16px;
+    width: 16px;
+    color: #2563eb;
+  }
+  
+  .point-label {
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100%);
+    font-size: 12px;
+    font-weight: 500;
+    background-color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+  }
+  
+  .map-legend {
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+  }
+  
+  .legend-item {
+    display: flex;
+    align-items: center;
+  }
+  
+  .legend-color {
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+  }
+  
+  .on-time {
+    background-color: #10b981;
+  }
+  
+  .delayed {
+    background-color: #f59e0b;
+  }
+  
+  .issue {
+    background-color: #ef4444;
+  }
+  
+  .legend-icon {
+    height: 16px;
+    width: 16px;
+    color: #3b82f6;
+    margin-right: 8px;
+  }
+  
+  .legend-text {
+    color: #64748b;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes pingSlow {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    75%, 100% {
+      transform: scale(1.1);
+      opacity: 0.7;
+    }
+  }

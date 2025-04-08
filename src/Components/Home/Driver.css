@@ -1,0 +1,26 @@
+/* DriverPage.css */
+.driver-dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 20px;
+  }
+  
+  .vehicle-shipment-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .timeline-deliveries-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  /* For larger screens */
+  @media (min-width: 1024px) {
+    .vehicle-shipment-container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }

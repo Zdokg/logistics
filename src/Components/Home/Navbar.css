@@ -36,6 +36,7 @@
     color: #f77f00; /* Replace with your primary color */
     font-weight: bold;
     font-size: 1.5rem;
+    text-decoration: none;
   }
   
   .navbar-company-name {
@@ -43,6 +44,7 @@
     color: #333; /* Replace with your foreground color */
     display: none;
     font-weight: bold;
+    text-decoration: none;
   }
   
   @media (min-width: 640px) {

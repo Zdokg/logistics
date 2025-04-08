@@ -1,0 +1,195 @@
+/* Container */
+.login-container {
+  display: flex;
+  justify-content: center; /* Horizontally centers */
+  align-items: center; /* Vertically centers */
+  height: 100vh; /* Full screen height */
+  background-color: #f8f9fa;
+}
+
+.left {
+  flex: 1;
+  background-color: #e9ecef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.left img {
+  max-width: 80%;
+  height: auto;
+}
+
+.right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+/* Card */
+.login-card {
+  width: 100%;
+  max-width: 450px;
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+  padding: 2.5rem;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Header */
+.login-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.truck-icon {
+  color: #f77f00;
+}
+
+.titre {
+  font-size: 2rem;
+  margin: 0.5rem 0;
+}
+
+/* Input groups */
+.input-group {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  color: #333;
+}
+
+.input-group input {
+  padding: 0.6rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+/* Password toggle */
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-container input {
+  flex: 1;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: #555;
+}
+
+/* Role selector */
+.role-selector {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.role-button {
+  padding: 0.5rem 1.5rem;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  background-color: white;
+  color: #333;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.role-button:hover {
+  border-color: #f77f00;
+}
+
+.role-button.selected {
+  border-color: #f77f00;
+  background-color: #f77f00;
+  color: white;
+}
+
+/* Login / Signup button */
+.login-button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #f77f00;
+  color: white;
+  border: none;
+  font-weight: bold;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-button:hover {
+  background-color: #f77f00;
+}
+
+.login-button:disabled {
+  background-color: #7aa7d9;
+  cursor: not-allowed;
+}
+
+.login-icon {
+  margin-right: 0.5rem;
+}
+
+.loader {
+  animation: spin 1s linear infinite;
+}
+
+/* Signup link */
+.signup-link {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+.signup-text {
+  color: #f77f00;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.signup-text:hover {
+  text-decoration: underline;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

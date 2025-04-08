@@ -1,0 +1,83 @@
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  
+  .stat-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 24px;
+    backdrop-filter: blur(10px);
+    animation: scaleIn 0.3s ease-in-out;
+    transition: transform 0.3s ease;
+  }
+  
+  .stat-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .stat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+  }
+  
+  .stat-icon {
+    background-color: #f4f4f4;
+    padding: 12px;
+    border-radius: 8px;
+    color: #ff6600;
+  }
+  
+  .stat-change {
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+  }
+  
+  .stat-change.positive {
+    color: #1d8731;
+  }
+  
+  .stat-change.negative {
+    color: #d93636;
+  }
+  
+  .arrow-icon {
+    width: 14px;
+    height: 14px;
+    margin-right: 4px;
+  }
+  
+  .stat-body .stat-title {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 4px;
+  }
+  
+  .stat-body .stat-value {
+    font-size: 24px;
+    font-weight: 600;
+  }
+  
+  /* Optional animation delays */
+  .delay-100 { animation-delay: 0.1s; }
+  .delay-200 { animation-delay: 0.2s; }
+  .delay-300 { animation-delay: 0.3s; }
+  .delay-400 { animation-delay: 0.4s; }
+  
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  

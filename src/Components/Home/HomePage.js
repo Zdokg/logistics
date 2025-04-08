@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import SplashScreen from '../Components/SplashScreen';
-import Navbar from '../Components/Navbar';
-import Hero from '../Components/Hero';
-import About from '../Components/About';
-import Services from '../Components/Service';
-import Contact from '../Components/Contact';
-import Footer from '../Components/Footer';
+import SplashScreen from './SplashScreen';
+import Navbar from './Navbar';
+import Hero from './Hero';
+import About from './About';
+import Services from './Service';
+import Contact from './Contact';
+import Footer from './Footer';
 import './HomePage.css'; // Import the CSS file
 
 const HomePage = () => {

@@ -5,16 +5,9 @@ import './Navbar.css'; // Import the CSS file
 import { Outlet, Link } from "react-router-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-const Navbar = () => {
+const NavbarLog = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  const navLinks = [
-    { title: "Home", href: "#home" },
-    { title: "About", href: "#about" },
-    { title: "Services", href: "#services" },
-    { title: "Contact", href: "#contact" },
-  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,23 +43,17 @@ const Navbar = () => {
     >
       <div className="navbar-container">
         <div className="navbar-brand">
-          <span className="navbar-logo">GSL</span>
-          <span className="navbar-company-name">
-            Golden Sunrise Logistics
-          </span>
+          <Link to={"/"} className="navbar-logo">GSL
+          </Link>
+          <Link to={"/"} className="navbar-company-name">Golden Sunrise Logistics
+          </Link>
+      
+           
+          
         </div>
 
         {/* Desktop Navigation */}
         <nav className="desktop-nav">
-          {navLinks.map((link) => (
-            <button
-              key={link.title}
-              onClick={() => scrollToSection(link.href)}
-              className="nav-link"
-            >
-              {link.title}
-            </button>
-          ))}
           <Link to="./login" className="felsa">
             Log In
           </Link>
@@ -96,15 +83,6 @@ const Navbar = () => {
           className="mobile-nav"
         >
           <div className="mobile-nav-container">
-            {navLinks.map((link) => (
-              <button
-                key={link.title}
-                onClick={() => scrollToSection(link.href)}
-                className="mobile-nav-link"
-              >
-                {link.title}
-              </button>
-            ))}
             
           </div>
         </motion.div>
@@ -113,4 +91,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavbarLog;

@@ -2,18 +2,27 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Eye, EyeOff, Loader2, LogIn, Truck } from "lucide-react"; // Assuming you have this custom hook
 import "./login.css"; // Import the CSS file
+import axios from "axios";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [message, setMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
-  
+    try {
+      const response = await axios.post("http://localhost:3000/API/Login", { email, password });
+      if (response.status === 200) {
+        setMessage(response.data.message);
+        navigate("/dashboard");
+      }
+    } catch (error) {
+      setMessage(error.response?.data?.message || "An error occurred");
+    }
   };
 
   const toggleShowPassword = () => {
@@ -21,11 +30,13 @@ const Login = () => {
   };
 
   return (
+    
+    
     <div className="login-container">
-    <div className="left">
-        <img src={`${process.env.PUBLIC_URL}/Photos/container.png`} />
-    </div>
-    <div className="right">
+      <div className="left">
+        <img src="../public/Photos/map6.jpg"/>
+      </div>
+      <div className="right">
       <div className="login-card">
         <div className="login-header">
           <Truck size={70} className="truck-icon" />
@@ -33,7 +44,7 @@ const Login = () => {
           <p>Log in to access your logistics dashboard</p>
         </div>
         
-        <form onSubmit={handleLogin}>
+        <form onSubmit={handleSubmit}>
           <div className="input-group">
             <label htmlFor="email">Email</label>
             <input
@@ -79,7 +90,7 @@ const Login = () => {
               </>
             ) : (
               <>
-                <LogIn className="login-icon" />
+                <LogIn className="login-icon" type="submit"/>
                 Log In
               </>
             )}
@@ -87,11 +98,14 @@ const Login = () => {
 
           <p className="signup-link">
             Don't have an account?{" "}
-            <a href="#" className="signup-text">Sign up</a>
+            <a href="/signup" className="signup-text">Sign Up</a>
           </p>
         </form>
+      </div>
       </div></div>
-    </div>
+
+
+    
   );
 };
 

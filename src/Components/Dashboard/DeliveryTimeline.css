@@ -1,0 +1,179 @@
+/* DeliveryTimeline.css */
+
+.delivery-timeline-card {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 12px;
+    padding: 24px;
+    animation: fadeIn 0.5s ease-in 0.3s;
+    animation-fill-mode: both;
+  }
+  
+  .delivery-timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+  
+  .delivery-timeline-header h2 {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0;
+  }
+  
+  .view-all-button {
+    font-size: 14px;
+    font-weight: 500;
+    color: #3b82f6;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  
+  .view-all-button:hover {
+    color: #2563eb;
+  }
+  
+  .delivery-items-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .delivery-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+    animation: slideIn 0.5s ease-in;
+    animation-fill-mode: both;
+  }
+  
+  .delivery-item:hover {
+    background-color: rgba(59, 130, 246, 0.05);
+  }
+  
+  .delivery-icon-container {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: #e0e7ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  
+  .delivery-package-icon {
+    height: 20px;
+    width: 20px;
+    color: #3b82f6;
+  }
+  
+  .delivery-details {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .delivery-info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .order-number {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0 0 4px 0;
+  }
+  
+  .customer-name {
+    font-size: 14px;
+    color: #6b7280;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .status-badge {
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+  }
+  
+  .status-icon {
+    height: 16px;
+    width: 16px;
+    margin-right: 4px;
+  }
+  
+  .status-badge.delivered {
+    background-color: #ecfdf5;
+    color: #059669;
+    border-color: #a7f3d0;
+  }
+  
+  .status-badge.in-transit {
+    background-color: #eff6ff;
+    color: #3b82f6;
+    border-color: #bfdbfe;
+  }
+  
+  .status-badge.delayed {
+    background-color: #fef3c7;
+    color: #d97706;
+    border-color: #fcd34d;
+  }
+  
+  .status-icon.delivered {
+    color: #10b981;
+  }
+  
+  .status-icon.in-transit {
+    color: #3b82f6;
+  }
+  
+  .status-icon.delayed {
+    color: #f59e0b;
+  }
+  
+  .delivery-meta {
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+    font-size: 12px;
+    color: #6b7280;
+  }
+  
+  .meta-separator {
+    margin: 0 8px;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }

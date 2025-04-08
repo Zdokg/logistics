@@ -14,15 +14,26 @@
 
 .right{
   flex: 1;
+  
 } 
+
+.tas{
+  position: relative;
+  box-shadow: whitesmoke !important;
+  
+}
+
 .left{
-  flex:1;
-  background:linear-gradient(to top, wheat, transparent);
+flex: 1;
+background-color: transparent !important;
 }
   
+
+
+
   .login-card {
-    
-    width: 100%;
+    length: 100vh !important;
+    width: 100vw !important;
     background-color: white;
     padding: 30px;
     border-radius: 8px;
@@ -71,7 +82,7 @@
     width: 95%;
     padding: 12px;
     font-size: 16px;
-    border: 1px solid #ccc;
+    border: 1px solid #000000;
     border-radius: 4px;
   }
   

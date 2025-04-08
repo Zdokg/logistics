@@ -1,0 +1,158 @@
+/* Header.css */
+
+.header-container {
+  animation: fadeIn 0.5s ease-in;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e2e8f0;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.menu-button {
+  margin-right: 1rem;
+  transition: all 0.2s;
+}
+
+.menu-button:hover {
+  background-color: #e0e7ff !important;
+}
+
+.menu-icon {
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+.header-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .header-title {
+    display: block;
+  }
+}
+
+.header-search {
+  flex: 1;
+  max-width: 28rem;
+  margin: 0 1rem;
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .header-search {
+    display: block;
+  }
+}
+
+.search-container {
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #64748b;
+  height: 1rem;
+  width: 1rem;
+}
+
+.search-input {
+  padding-left: 2.5rem !important;
+  background-color: rgba(226, 232, 240, 0.5) !important;
+  border: none !important;
+}
+
+.search-input:focus {
+  box-shadow: 0 0 0 1px #93c5fd !important;
+  transition: all 0.2s;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.notification-button {
+  position: relative;
+  transition: all 0.2s;
+}
+
+.notification-button:hover {
+  background-color: #e0e7ff !important;
+}
+
+.notification-icon {
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+.notification-badge {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  height: 0.5rem;
+  width: 0.5rem;
+  background-color: #3b82f6;
+  border-radius: 50%;
+  animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.user-avatar {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  background-color: #e0e7ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.user-avatar:hover {
+  background-color: #c7d2fe;
+}
+
+.user-icon {
+  height: 1.25rem;
+  width: 1.25rem;
+  color: #1d4ed8;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ping {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
