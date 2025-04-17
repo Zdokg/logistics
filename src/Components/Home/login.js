@@ -1,60 +1,61 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Eye, EyeOff, Loader2, LogIn, Truck } from "lucide-react"; // Assuming you have this custom hook
-import "./login.css"; // Import the CSS file
+import { Eye, EyeOff, Loader2, LogIn, Truck } from "lucide-react";
+import "./login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [message, setMessage] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    setIsLoading(true); // Start loading
-
-    // Clear previous error
-    setError("");
-
-    const response = await fetch("http://localhost:5000/API/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
-    });
-
-    const data = await response.json();
-    setIsLoading(false); // Stop loading
-
-    console.log("Response from server:", data);
-
-    if (response.ok) {
-      // Store JWT token in localStorage
-      localStorage.setItem("token", data.token);
-
-      // Navigate based on user role
-      if (data.role === "admin") {
-        navigate("/"); // Admin dashboard
-      } else if (data.role === "driver") {
-        navigate("/driver/dashboard"); // Driver dashboard
-      }
-    } else {
-      setError(data.message || "Something went wrong. Please try again.");
-    }
-  };
 
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    setIsLoading(true);
+    setError("");
+
+    try {
+      const response = await fetch("http://localhost:5000/API/Login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password })
+      });
+
+      const data = await response.json();
+      setIsLoading(false);
+
+      if (response.ok) {
+        // On stocke le token pour protéger les routes
+        localStorage.setItem("token", data.token);
+
+        // Redirection en fonction du rôle
+        if (data.user.role === "admin") {
+          navigate("/dashboard"); // Dashboard admin
+        } else if (data.user.role === "driver") {
+          navigate("/driver");
+        } else if (data.user.role === "client") {
+          navigate("/");
+        }
+      } else {
+        setError(data.message || "Something went wrong. Please try again.");
+      }
+    } catch (err) {
+      console.error("Network error:", err);
+      setError("Erreur réseau, réessayez plus tard.");
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className="login-container">
-      <div className="left">
-        <img className="tas" src={"/Photos/map7.png"} alt="map" />
-      </div>
+      
       <div className="right">
         <div className="login-card">
           <div className="login-header">
@@ -64,7 +65,7 @@ const Login = () => {
           </div>
 
           <form onSubmit={handleSubmit}>
-            {error && <p className="error-message">{error}</p>} {/* Display error if exists */}
+            {error && <p className="error-message">{error}</p>}
 
             <div className="input-group">
               <label htmlFor="email">Email</label>
@@ -111,7 +112,7 @@ const Login = () => {
                 </>
               ) : (
                 <>
-                  <LogIn className="login-icon" type="submit"/>
+                  <LogIn className="login-icon" />
                   Log In
                 </>
               )}

@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import './Navbar.css'; // Import the CSS file
-import { Outlet, Link } from "react-router-dom";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -52,7 +52,7 @@ const Navbar = () => {
         <div className="navbar-brand">
           <Link to={"/"} className="navbar-logo">GSL
                     </Link>
-                    <Link to={"/"} className="navbar-company-name">Golden Sunrise Logistics
+                     <Link to={"/"} className="navbar-company-name">Golden Sunrise Logistics
                     </Link>
         </div>
 

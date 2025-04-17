@@ -14,16 +14,37 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     try {
-      const response = await axios.post("http://localhost:3000/API/Login", { email, password });
+      const response = await axios.post("http://localhost:5000/API/Login", {
+        email,
+        password,
+      });
+  
       if (response.status === 200) {
-        setMessage(response.data.message);
-        navigate("/dashboard");
+        const { message, role } = response.data;
+  
+        // ✅ Save role in localStorage
+        localStorage.setItem("role", role);
+        setMessage(message);
+  
+        // ✅ Navigate based on role
+        if (role === "admin") {
+          navigate("/admin");
+        } else if (role === "driver") {
+          navigate("/driver");
+        } else {
+          navigate("/"); // fallback
+        }
       }
     } catch (error) {
       setMessage(error.response?.data?.message || "An error occurred");
+    } finally {
+      setIsLoading(false);
     }
   };
+  
+  
 
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
@@ -33,9 +54,12 @@ const Login = () => {
     
     
     <div className="login-container">
+
       <div className="left">
         <img src="../public/Photos/map6.jpg"/>
       </div>
+
+
       <div className="right">
       <div className="login-card">
         <div className="login-header">
@@ -44,6 +68,9 @@ const Login = () => {
           <p>Log in to access your logistics dashboard</p>
         </div>
         
+
+
+
         <form onSubmit={handleSubmit}>
           <div className="input-group">
             <label htmlFor="email">Email</label>
@@ -56,6 +83,9 @@ const Login = () => {
               required
             />
           </div>
+
+
+
 
           <div className="input-group">
             <label htmlFor="password">Password</label>
@@ -74,6 +104,10 @@ const Login = () => {
             </div>
           </div>
 
+
+
+
+
           <div className="remember-forgot">
             <label className="remember-me">
               <input type="checkbox" />
@@ -81,6 +115,10 @@ const Login = () => {
             </label>
             <a href="#" className="forgot-password">Forgot password?</a>
           </div>
+
+
+
+          
 
           <button type="submit" className="login-button" disabled={isLoading}>
             {isLoading ? (
@@ -96,13 +134,26 @@ const Login = () => {
             )}
           </button>
 
+
+
+
           <p className="signup-link">
             Don't have an account?{" "}
             <a href="/signup" className="signup-text">Sign Up</a>
           </p>
+
+
+
+
         </form>
+
+
+
+
+
       </div>
-      </div></div>
+      </div>
+      </div>
 
 
     

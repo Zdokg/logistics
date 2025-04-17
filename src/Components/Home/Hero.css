@@ -114,6 +114,7 @@
     cursor: pointer;
     position: relative;
     right: 250px;
+    text-decoration: none;
   }
   
   .btn-primary:hover {

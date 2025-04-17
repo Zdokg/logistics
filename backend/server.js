@@ -1,19 +1,26 @@
 const express = require("express");
-const connectDB = require("./config/db");
 const cors = require("cors");
-const app = express();
-const Road = require("./routes/signup");
-const Route = require("./routes/login");
-const authRoutes = require("./routes/authRoutes");
+const connectDB = require("./config/db");
 
+const signupRoutes = require("./routes/signup");
+const loginRoutes = require("./routes/login");
+const fleet = require("./routes/Fleet");
+const ship = require("./routes/Shipments");
+
+const app = express();
+const PORT = 5000;
 
 app.use(express.json());
-app.use(cors());
-connectDB();
-app.use("/API" ,Road);
-app.use("/API", Route);
-app.use("/API", authRoutes);
 app.use(cors({ origin: "http://localhost:3000" }));
 
+connectDB();
 
-app.listen(5000, () => console.log("Serveur en écoute sur http://localhost:5000"));
+
+app.use("/API", signupRoutes);
+app.use("/API", loginRoutes);
+app.use("/API", fleet);
+app.use("/API", ship);
+
+app.listen(PORT, () => {
+  console.log(`Serveur en écoute sur http://localhost:${PORT}`);
+});

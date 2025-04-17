@@ -1,56 +1,92 @@
 import { Toaster } from "react-hot-toast";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation
+} from "react-router-dom";
+import "./App.css";
 
-import Navbar from "./Components/Home/Navbar"; // Make sure this path is correct
+
+
 import Home from "./pages/Index";
 import Login from "./Components/Home/login";
 import SignUp from "./Components/Home/signup";
 import NavbarLog from "./Components/Home/navbar.log";
 import Dashboard from "./Components/Home/Dashboard";
-import Driver from "./Components/Home/Driver";
-
-import "./App.css";
+import Shipments from "./Components/DPages/Shipments";
+import Help from "./Components/DPages/Help";
+import Analytics from "./Components/DPages/Analytics";
+import Customers from "./Components/DPages/Customers";
+import Fleet from "./Components/DPages/Fleet";
+import MessagesA from "./Components/DPages/MessagesA";
+import Settings from "./Components/DPages/Settings";
+import Hiring from "./Components/DPages/Hiring";
+import Driver from "./Components/Driver/DashboardD";
+import MessagesD from "./Components/Driver/MessagesD";
+import TruckD from "./Components/Driver/TruckDetails";
+import SD from "./Components/Driver/ShippingDetails";
+import Profile from "./Components/Driver/Profile";
+import ERROR from "./Components/Home/404";
+import Quote from "./Components/Quote/Quote";
 
 // Query Client instance
 const queryClient = new QueryClient();
 
-// This component handles route-based rendering
-const AppWrapper = () => {
+// Show Navbar on specific paths
+const Layout = ({ children }) => {
   const location = useLocation();
-
-  // Routes where Navbar should show
   const navPath = ["/", "/login", "/signup"];
+ 
 
   return (
     <>
-      {/* Show Navbar only on certain routes */}
       {navPath.includes(location.pathname) && <NavbarLog />}
-
-      {/* Toast and Routing */}
-      <Toaster />
-
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/dashboard" element={<Dashboard />}/>
-        <Route path="/driver" element={<Driver />}/>
-      </Routes>
+      {children}
     </>
   );
 };
 
-// Main App
-const App = () => {
+function AppRoutes() {
+  return (
+    <Routes>
+      {/* Public Routes */}
+      <Route path="/" element={<Home />} />
+      <Route path="/404" element={<ERROR />} />
+      <Route path="/quote" element={<Quote />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<SignUp />} />
+      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/shipments" element={<Shipments />} />
+      <Route path="/help" element={<Help />} />
+      <Route path="/fleet" element={<Fleet />} />
+      <Route path="/analytics" element={<Analytics />} />
+      <Route path="/customer" element={<Customers />} />
+      <Route path="/messagesA" element={<MessagesA />} />
+      <Route path="/settings" element={<Settings />} />
+      <Route path="/hiring" element={<Hiring />} />
+      <Route path="/driver" element={<Driver />} />
+      <Route path="/messagesD" element={<MessagesD />} />
+      <Route path="/truckD" element={<TruckD />} />
+      <Route path="/SD" element={<SD />} />
+      <Route path="/profile" element={<Profile />} />
+
+    </Routes>
+  );
+}
+
+function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <Router>
-        <AppWrapper />
+        <Layout>
+          <Toaster />
+          <AppRoutes />
+        </Layout>
       </Router>
     </QueryClientProvider>
   );
-};
+}
 
 export default App;
-

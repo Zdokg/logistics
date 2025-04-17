@@ -1,171 +1,255 @@
-import React, { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
-import { MapPin, Phone, Mail } from 'lucide-react';
-import './Contact.css'; // Import the CSS file
+import React, { useState } from 'react';
+import { Mail, Phone, MapPin, Clock, Send, Loader2 } from 'lucide-react';
+import './Contact.css';
 
 const Contact = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px 0px" });
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission here 
-    console.log('Form submitted');
-    // Add form submission logic or API calls
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    subject: '',
+    message: '',
+  });
+  
+  const [isLoading, setIsLoading] = useState(false);
+  
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
-
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    // Form validation
+    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+      alert('Please fill in all required fields');
+      return;
+    }
+    
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      alert('Please enter a valid email address');
+      return;
+    }
+    
+    try {
+      setIsLoading(true);
+      
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      alert('Your message has been sent! We will get back to you soon.');
+      
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        subject: '',
+        message: '',
+      });
+    } catch (error) {
+      console.error('Contact form error:', error);
+      alert('An error occurred while sending your message');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  
   return (
-    <section id="contact" className="contact-section" ref={ref}>
-      <div className="contact-container">
-        <div className="contact-header">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="contact-title">
-              Get in <span className="primary-text">Touch</span>
-            </h2>
-            <p className="contact-subtitle">
-              Have questions or ready to get started? Reach out to our team and we'll get back to you promptly.
-            </p>
-          </motion.div>
-        </div>
-
-        <div className="contact-grid">
-          <div className="contact-info">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="info-content"
-            >
-              <div className="info-header">
-                <h3 className="info-title">Contact Information</h3>
-                <p className="info-description">
-                  Our team is ready to assist you with any questions about our services.
-                </p>
-              </div>
-
-              <div className="info-details">
-                <div className="info-item">
-                  <div className="info-icon">
-                    <MapPin className="icon" size={20} />
-                  </div>
-                  <div className="info-text">
-                    <p className="info-label">Our Location</p>
-                    <p className="info-value">123 Logistics Way, Shipping City, SC 12345</p>
-                  </div>
-                </div>
-                
-                <div className="info-item">
-                  <div className="info-icon">
-                    <Phone className="icon" size={20} />
-                  </div>
-                  <div className="info-text">
-                    <p className="info-label">Phone Number</p>
-                    <p className="info-value">+1 (555) 123-4567</p>
-                  </div>
-                </div>
-                
-                <div className="info-item">
-                  <div className="info-icon">
-                    <Mail className="icon" size={20} />
-                  </div>
-                  <div className="info-text">
-                    <p className="info-label">Email Address</p>
-                    <p className="info-value">info@goldensunriselogistics.com</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="social-section">
-                <h4 className="social-title">Follow Us</h4>
-                <div className="social-icons">
-                  <a href="#" className="social-icon">
-                    <svg className="icon-svg" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd"></path>
-                    </svg>
-                  </a>
-                  <a href="#" className="social-icon">
-                    <svg className="icon-svg" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
-                    </svg>
-                  </a>
-                  <a href="#" className="social-icon">
-                    <svg className="icon-svg" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path fillRule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clipRule="evenodd"></path>
-                    </svg>
-                  </a>
-                  <a href="#" className="social-icon">
-                    <svg className="icon-svg" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path fillRule="evenodd" d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 0 1 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418ZM15.194 12 10 15V9l5.194 3Z" clipRule="evenodd" />
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="contact-form-container"
-          >
-            <h3 className="form-title">Send us a Message</h3>
+    <section id="contact" className="contact-form-container">
+      <div className="contact-header">
+        <h1>Contact Us</h1>
+        <p className="contact-subtitle">
+          Have questions or need logistics solutions? We're here to help. Reach out to our team.
+        </p>
+      </div>
+      
+      <div className="contact-content">
+        <div className="contact-form-section">
+          <div className="form-card">
+            <h2>Send us a message</h2>
             <form onSubmit={handleSubmit} className="contact-form">
-              <div className="form-grid">
+              <div className="form-row">
                 <div className="form-group">
-                  <label htmlFor="name" className="form-label">Name</label>
+                  <label htmlFor="name">
+                    Full Name <span className="required">*</span>
+                  </label>
                   <input
-                    id="name"
                     type="text"
-                    placeholder="Your Name"
-                    className="form-input"
+                    id="name"
+                    name="name"
+                    placeholder="John Doe"
+                    value={formData.name}
+                    onChange={handleChange}
                     required
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="email" className="form-label">Email</label>
+                  <label htmlFor="email">
+                    Email <span className="required">*</span>
+                  </label>
                   <input
-                    id="email"
                     type="email"
-                    placeholder="Your Email"
-                    className="form-input"
+                    id="email"
+                    name="email"
+                    placeholder="your@email.com"
+                    value={formData.email}
+                    onChange={handleChange}
                     required
                   />
                 </div>
               </div>
               
-              <div className="form-group">
-                <label htmlFor="subject" className="form-label">Subject</label>
-                <input
-                  id="subject"
-                  type="text"
-                  placeholder="Subject"
-                  className="form-input"
-                  required
-                />
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="phone">Phone Number</label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="+1 (123) 456-7890"
+                    value={formData.phone}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="subject">
+                    Subject <span className="required">*</span>
+                  </label>
+                  <select
+                    id="subject"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="" disabled>Select a subject</option>
+                    <option value="General Inquiry">General Inquiry</option>
+                    <option value="Shipping Quote">Shipping Quote</option>
+                    <option value="Tracking Issue">Tracking Issue</option>
+                    <option value="Business Partnership">Business Partnership</option>
+                    <option value="Job Application">Job Application</option>
+                    <option value="Feedback">Feedback</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
               </div>
               
               <div className="form-group">
-                <label htmlFor="message" className="form-label">Message</label>
+                <label htmlFor="message">
+                  Message <span className="required">*</span>
+                </label>
                 <textarea
                   id="message"
-                  placeholder="Your message..."
-                  className="form-textarea"
+                  name="message"
+                  rows={5}
+                  placeholder="How can we help you?"
+                  value={formData.message}
+                  onChange={handleChange}
                   required
-                />
+                ></textarea>
               </div>
               
               <div className="form-submit">
-                <button type="submit" className="submit-button">
-                  Send Message
+                <button
+                  type="submit"
+                  disabled={isLoading}
+                >
+                  {isLoading ? (
+                    <Loader2 className="spinner" />
+                  ) : (
+                    <Send className="icon" />
+                  )}
+                  {isLoading ? 'Sending...' : 'Send Message'}
                 </button>
               </div>
             </form>
-          </motion.div>
+          </div>
+        </div>
+        
+        <div className="contact-info-section">
+          <div className="info-card">
+            <h2>Contact Information</h2>
+            <div className="info-content">
+              <div className="info-item">
+                <div className="info-icon">
+                  <MapPin />
+                </div>
+                <div>
+                  <h3>Office Address</h3>
+                  <p>
+                    123 Logistics Avenue, Suite 500<br />
+                    New York, NY 10001<br />
+                    United States
+                  </p>
+                </div>
+              </div>
+              
+              <div className="info-item">
+                <div className="info-icon">
+                  <Mail />
+                </div>
+                <div>
+                  <h3>Email Us</h3>
+                  <p>For general inquiries:</p>
+                  <a href="mailto:info@logisync.com">
+                    info@logisync.com
+                  </a>
+                  <p>For support:</p>
+                  <a href="mailto:support@logisync.com">
+                    support@logisync.com
+                  </a>
+                </div>
+              </div>
+              
+              <div className="info-item">
+                <div className="info-icon">
+                  <Phone />
+                </div>
+                <div>
+                  <h3>Call Us</h3>
+                  <p>Main Office:</p>
+                  <a href="tel:+15551234567">
+                    +1 (555) 123-4567
+                  </a>
+                  <p>Customer Support:</p>
+                  <a href="tel:+15557891234">
+                    +1 (555) 789-1234
+                  </a>
+                </div>
+              </div>
+              
+              <div className="info-item">
+                <div className="info-icon">
+                  <Clock />
+                </div>
+                <div>
+                  <h3>Business Hours</h3>
+                  <p>Monday - Friday:</p>
+                  <p className="hours">9:00 AM - 6:00 PM EST</p>
+                  <p>Saturday:</p>
+                  <p className="hours">10:00 AM - 2:00 PM EST</p>
+                  <p>Sunday:</p>
+                  <p className="hours">Closed</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="map-container">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343008!2d-74.00425872426631!3d40.74076097132708!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259bf5c1654f3%3A0xc80f9cfce5383d5d!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1690594102932!5m2!1sen!2sus" 
+              width="100%" 
+              height="100%" 
+              style={{ border: 0 }} 
+              allowFullScreen 
+              loading="lazy" 
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
         </div>
       </div>
     </section>

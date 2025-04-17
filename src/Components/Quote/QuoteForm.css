@@ -1,0 +1,146 @@
+.quote-form-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .form-card {
+    padding: 30px;
+    margin-top: 20px;
+  }
+  
+  .quote-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .form-step {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: black;
+  }
+  
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  @media (min-width: 768px) {
+    .form-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .form-control {
+    margin-top: 10px;
+  }
+  
+  .service-options {
+    margin-top: 20px;
+  }
+  
+  .service-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin-top: 10px;
+  }
+  
+  @media (min-width: 768px) {
+    .service-cards {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .service-card {
+    padding: 15px;
+    cursor: pointer;
+    border: 2px solid #e0e0e0;
+    transition: all 0.3s ease;
+  }
+  
+  .service-card:hover {
+    border-color: #ffe2c3;
+  }
+  
+  .service-card.selected {
+    
+    background-color: #ffe0be;
+  }
+  
+  .service-card-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .service-icon {
+    background-color: rgba(25, 118, 210, 0.1);
+    color: #f77f00;
+  }
+  
+  .delivery-speed {
+    margin-top: 20px;
+  }
+  
+  .delivery-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .confirmation-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    padding: 20px 0;
+  }
+  
+  .confirmation-icon {
+    margin-bottom: 20px;
+  }
+  
+  .success-icon {
+    color: #4caf50;
+    width: 60px;
+    height: 60px;
+  }
+  
+  .success-icon svg {
+    font-size: 2.5rem;
+  }
+  
+  .reference-number {
+    margin: 20px 0;
+    text-align: center;
+  }
+  
+  .new-quote-button {
+    margin-top: 20px;
+  }
+  
+  .form-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+  }
+
+
+  .form-step-title {
+    color: #f77f00;
+  }
+
+  .reference-num {
+    color: #f77f00;
+  }
+
+  .Home-but {
+    position: absolute;
+    left: 280px;
+  }

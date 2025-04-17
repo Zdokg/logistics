@@ -1,44 +1,49 @@
-import React from 'react';
-import { Bell, Menu, Search, User } from 'lucide-react';
-import "./Header.css";
+import { Bell, Search } from "lucide-react";
+import { useState } from "react";
+import "./Header.css"; // We'll create this CSS file
 
-const Header = ({ toggleSidebar }) => {
+export default function Header() {
+  const [notifications] = useState(3);
+  
   return (
-    <header className="header-container">
-      <div className="header-left">
-        <button 
-          variant="ghost" 
-          size="icon" 
-          onClick={toggleSidebar}
-          className="menu-button"
-        >
-          <Menu className="menu-icon" />
-        </button>
-        <h1 className="header-title">Logistics Dashboard</h1>
-      </div>
-      
-      <div className="header-search">
-        <div className="search-container">
-          <Search className="search-icon" />
-          <input 
-            type="search" 
-            placeholder="Search shipments, orders..." 
-            className="search-input"
-          />
+    <header className="header">
+      <div className="header-container">
+        <div className="header-search-container">
+          <div className="search-input-wrapper">
+            <div className="search-icon">
+              <Search className="search-icon-svg" />
+            </div>
+            <input
+              type="text"
+              className="search-input"
+              placeholder="Search..."
+            />
+          </div>
         </div>
-      </div>
-      
-      <div className="header-right">
-        <button variant="ghost" size="icon" className="notification-button">
-          <Bell className="notification-icon" />
-          <span className="notification-badge"></span>
-        </button>
-        <div className="user-avatar">
-          <User className="user-icon" />
+        
+        <div className="header-actions">
+          <div className="notifications-wrapper">
+            <button className="notifications-button">
+              <Bell className="bell-icon" />
+              {notifications > 0 && (
+                <span className="notification-badge">
+                  {notifications}
+                </span>
+              )}
+            </button>
+          </div>
+          
+          <div className="user-profile">
+            <div className="user-avatar">
+              <span className="avatar-initials">JD</span>
+            </div>
+            <div className="user-info">
+              <div className="user-name">John Doe</div>
+              <div className="user-role">Driver</div>
+            </div>
+          </div>
         </div>
       </div>
     </header>
   );
-};
-
-export default Header;
+}

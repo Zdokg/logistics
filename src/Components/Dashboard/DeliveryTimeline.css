@@ -22,9 +22,9 @@
   }
   
   .view-all-button {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
-    color: #3b82f6;
+    color: #afafb1 !important;
     background: none;
     border: none;
     cursor: pointer;
@@ -32,7 +32,7 @@
   }
   
   .view-all-button:hover {
-    color: #2563eb;
+    color: grey !important;
   }
   
   .delivery-items-container {
@@ -60,7 +60,7 @@
     height: 40px;
     width: 40px;
     border-radius: 50%;
-    background-color: #e0e7ff;
+    background-color: rgb(231, 213, 197) !important;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -70,7 +70,7 @@
   .delivery-package-icon {
     height: 20px;
     width: 20px;
-    color: #3b82f6;
+    color: rgb(117, 112, 107);
   }
   
   .delivery-details {

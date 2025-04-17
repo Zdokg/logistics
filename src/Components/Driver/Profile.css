@@ -1,0 +1,85 @@
+.profile-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .profile-header h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .profile-header p {
+    color: #666;
+  }
+  
+  .profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .profile-card {
+    margin-bottom: 20px;
+  }
+  
+  .profile-main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .profile-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 16px;
+  }
+  
+  .chip-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  
+  .notification-options {
+    margin-top: 16px;
+  }
+  
+  .button-end {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 16px;
+  }
+  
+  .sidebar-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .driver-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 16px;
+  }
+  
+  .chip-cert {
+    background-color: #e3f2fd;
+    color: #1976d2;
+  }
+  
+  .chip-route {
+    background-color: #f0f0f0;
+  }
+  

@@ -1,0 +1,95 @@
+.quote-header-container {
+    width: 100%;
+    max-width: 80rem; /* 7xl equivalent */
+    margin: 0 auto;
+    padding: 4rem 1rem; /* py-16 px-4 equivalent */
+  }
+  
+  @media (min-width: 768px) {
+    .quote-header-container {
+      padding-top: 6rem; /* md:py-24 equivalent */
+      padding-bottom: 6rem;
+    }
+  }
+  
+  .quote-header-text {
+    text-align: center;
+    margin-bottom: 4rem; /* mb-16 equivalent */
+  }
+  
+  .quote-header-text h1 {
+    font-size: 2.25rem; /* text-4xl equivalent */
+    line-height: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem; /* mb-6 equivalent */
+  }
+  
+  @media (min-width: 768px) {
+    .quote-header-text h1 {
+      font-size: 3rem; /* md:text-5xl equivalent */
+    }
+  }
+  
+  .primary-text {
+    color: #f77f00; /* primary color - adjust as needed */
+  }
+  
+  .quote-header-text p {
+    font-size: 1.25rem; /* text-xl equivalent */
+    color: #6b7280; /* text-muted-foreground equivalent */
+    max-width: 72rem; /* max-w-3xl equivalent */
+    margin: 0 auto;
+  }
+  
+  .features-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem; /* gap-8 equivalent */
+    margin-bottom: 4rem; /* mb-16 equivalent */
+  }
+  
+  @media (min-width: 768px) {
+    .features-grid {
+      grid-template-columns: repeat(2, 1fr); /* md:grid-cols-2 */
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .features-grid {
+      grid-template-columns: repeat(4, 1fr); /* lg:grid-cols-4 */
+    }
+  }
+  
+  .feature-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem; /* p-6 equivalent */
+    border-radius: 0.75rem; /* rounded-xl equivalent */
+    background-color: rgba(229, 231, 235, 0.5); /* bg-secondary/50 equivalent */
+  }
+  
+  .icon-container {
+    background-color: #ffe9d1; /* bg-primary/10 equivalent */
+    padding: 0.75rem; /* p-3 equivalent */
+    border-radius: 9999px; /* rounded-full equivalent */
+    margin-bottom: 1rem; /* mb-4 equivalent */
+  }
+  
+  .feature-icon {
+    height: 1.5rem; /* h-6 equivalent */
+    width: 1.5rem; /* w-6 equivalent */
+    color: #f77f00 ; /* text-primary equivalent */
+  }
+  
+  .feature-card h3 {
+    font-size: 1.125rem; /* text-lg equivalent */
+    line-height: 1.75rem;
+    font-weight: 600; /* font-semibold equivalent */
+    margin-bottom: 0.5rem; /* mb-2 equivalent */
+  }
+  
+  .feature-card p {
+    color: #6b7280; /* text-muted-foreground equivalent */
+  }

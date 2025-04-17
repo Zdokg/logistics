@@ -1,9 +1,41 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 import { color, motion } from "framer-motion";
 import { Truck } from "lucide-react";
 import "./Hero.css"; // Importing the external CSS file
+import { Link } from "react-router-dom";
 
 const Hero = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  
+    const navLinks = [
+      { title: "learn more", href: "#about" },
+    ];
+  
+    useEffect(() => {
+      const handleScroll = () => {
+        if (window.scrollY > 20) {
+          setIsScrolled(true);
+        } else {
+          setIsScrolled(false);
+        }
+      };
+  
+      window.addEventListener('scroll', handleScroll);
+      return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+  
+    const toggleMobileMenu = () => {
+      setIsMobileMenuOpen(!isMobileMenuOpen);
+    };
+  
+    const scrollToSection = (sectionId) => {
+      const element = document.querySelector(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+        setIsMobileMenuOpen(false);
+      }
+    };
   return (
     <section id="home" className="hero-section">
       <div className="hero-pattern"></div>
@@ -34,8 +66,16 @@ const Hero = () => {
               </p>
 
               <div className="hero-buttons">
-                <button className="btn-primary">Get Started</button>
-                <button className="btn-outline">Learn More</button>
+                <Link to={"/quote"} className="btn-primary">Get Quote</Link>
+                {navLinks.map((link) => (
+            <button
+              key={link.title}
+              onClick={() => scrollToSection(link.href)}
+              className="btn-outline"
+            >
+              {link.title}
+            </button>
+          ))}
               </div>
 
               <div className="stats">
