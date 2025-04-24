@@ -102,7 +102,7 @@ const Hiring = () => {
       remote: values.remote,
       applicants: 0,
       postDate: new Date().toISOString().split("T")[0],
-    };
+    }; 
 
     setOpenPositions((prev) => [...prev, newPosition]);
     setSnackbarMessage(`${values.position} position has been posted.`);
@@ -116,12 +116,14 @@ const Hiring = () => {
       <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
       <div className={`main-content ${sidebarOpen ? 'sidebar-open' : 'sidebar-collapsed'}`}>
         <Header toggleSidebar={toggleSidebar} />
-        <main className="main-content-inner">
+        
+
           <div className="hiring-header">
             <div>
               <h1>Hiring Dashboard</h1>
               <p>Manage open positions and job applicants</p>
             </div>
+            
             <Button variant="contained" onClick={() => setDialogOpen(true)}>
               <UserPlus style={{ marginRight: "8px" }} /> Post New Position
             </Button>
@@ -310,7 +312,7 @@ const Hiring = () => {
             onClose={() => setSnackbarOpen(false)}
             message={snackbarMessage}
           />
-        </main>
+       
       </div>
     </div>
   );

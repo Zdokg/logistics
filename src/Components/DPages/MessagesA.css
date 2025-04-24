@@ -42,7 +42,7 @@
 }
 
 .search-icon11 {
-  position: absolute;
+  position: relative;
   left: 12px;
   top: 50%;
   transform: translateY(-50%);
@@ -53,6 +53,7 @@
 
 .search-input11 {
   width: 100%;
+  left: 10%;
 }
 
 .tabs {

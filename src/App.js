@@ -8,8 +8,6 @@ import {
 } from "react-router-dom";
 import "./App.css";
 
-
-
 import Home from "./pages/Index";
 import Login from "./Components/Home/login";
 import SignUp from "./Components/Home/signup";
@@ -30,15 +28,15 @@ import SD from "./Components/Driver/ShippingDetails";
 import Profile from "./Components/Driver/Profile";
 import ERROR from "./Components/Home/404";
 import Quote from "./Components/Quote/Quote";
+import { ChatProvider } from "./Components/ChatContext";
 
-// Query Client instance
+// Create QueryClient instance
 const queryClient = new QueryClient();
 
-// Show Navbar on specific paths
+// Layout to optionally show navbar
 const Layout = ({ children }) => {
   const location = useLocation();
   const navPath = ["/", "/login", "/signup"];
- 
 
   return (
     <>
@@ -48,6 +46,7 @@ const Layout = ({ children }) => {
   );
 };
 
+// App routes (no longer wrapped in ChatProvider here)
 function AppRoutes() {
   return (
     <Routes>
@@ -57,6 +56,8 @@ function AppRoutes() {
       <Route path="/quote" element={<Quote />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
+
+      {/* Main Dashboard Routes */}
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/shipments" element={<Shipments />} />
       <Route path="/help" element={<Help />} />
@@ -66,24 +67,28 @@ function AppRoutes() {
       <Route path="/messagesA" element={<MessagesA />} />
       <Route path="/settings" element={<Settings />} />
       <Route path="/hiring" element={<Hiring />} />
+
+      {/* Driver Routes */}
       <Route path="/driver" element={<Driver />} />
       <Route path="/messagesD" element={<MessagesD />} />
       <Route path="/truckD" element={<TruckD />} />
       <Route path="/SD" element={<SD />} />
       <Route path="/profile" element={<Profile />} />
-
     </Routes>
   );
 }
 
+// Root app component
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <Router>
-        <Layout>
-          <Toaster />
-          <AppRoutes />
-        </Layout>
+        <ChatProvider> {/* ✅ Now wrapping full app! */}
+          <Layout>
+            <Toaster />
+            <AppRoutes />
+          </Layout>
+        </ChatProvider>
       </Router>
     </QueryClientProvider>
   );

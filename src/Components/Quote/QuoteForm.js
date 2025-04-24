@@ -393,7 +393,7 @@ const QuoteForm = () => {
               ) : (
                 <div></div>
               )}
-              <Button variant="contained" color="secondary" onClick={goToHome} className='Home-but'>
+              <Button variant="contained" onClick={goToHome} style={{ backgroundColor: 'chocolate', color: 'white' }} className='Home-but'>
                 Home
               </Button>
               {activeStep < 2 ? (

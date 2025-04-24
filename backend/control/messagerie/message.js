@@ -27,4 +27,4 @@ const convo = async (req,res)=>{
         res.status(500).json({error: " service "});
     }
 };
-module.exports = {convo,sendmessage};
+module.exports = { convo, sendmessage };
